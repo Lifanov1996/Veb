@@ -1,13 +1,11 @@
-﻿namespace WebApplication1.Data
+﻿using System.Linq;
+
+namespace WebApplication1.Data
 {
     public class Persone
     {
-        List<Client> clients;
-
-        public List<Client> GetClients()
-        { 
-            clients = new()
-            {
+        private readonly List<Client> persone = new List<Client>() 
+        {
                 new Client(1, "Ivanov", "Ivan", "Ivanovich", "529-194", "Moskow", "Added persone"),
                 new Client(2, "Ivanova", "Inna", "Sergeewna", "528-190", "Moskow", "Added clientes"),
                 new Client(3, "Bondarow", "Adam", "Vladimirowich", "351-658", "Sankt- Peterburg", "Added persone"),
@@ -18,9 +16,26 @@
                 new Client(8, "Turusinov", "Sergey", "Petrovich", "529-445", "Omsk", "Added clientes")
 
 
-            };
+        };
+        
 
-            return clients;
+        /// <summary>
+        /// Весь список
+        /// </summary>
+        /// <returns></returns>
+        public List<Client> GetClients()
+        {
+            return persone;
+        }
+
+        /// <summary>
+        /// Отрыть клиента по id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<Client> GetClientsAllId(int id)
+        {
+            return persone.Where(x => x.Id == id).ToList();
         }
 
     }

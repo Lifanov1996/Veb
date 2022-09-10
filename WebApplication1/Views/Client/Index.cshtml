@@ -1,0 +1,37 @@
+﻿@model PersonModel
+@{
+    ViewData["Title"] = "Страница клаента";
+    Layout = "_Layout";
+}
+<html>
+    <div class="text-center">
+        <table class="table table-hover" frame="border">
+      <thead>
+        <tr>
+          <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Id</font></font></th>
+          <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Фамилия </font></font></th>
+          <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Имя</font></font></th>
+          <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отчество</font></font></th>
+          <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Номер телефона</font></font></th>
+          <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Адресс</font></font></th>
+          <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Описание</font></font></th>
+        </tr>
+      </thead>
+      <tbody>
+          <text><strong>Полная информация о клиенте</strong></text>
+          @foreach(var client in Model.PersonCollectoin)
+          {
+            <tr class="table-warning">
+              <th scope="row" width="50"><font style="vertical-align: inherit ;"><font style="vertical-align: inherit;">@client.Id</font></font></th>
+              <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.LastName</font></font></td>
+              <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.FirstName</font></font></td>
+              <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Patronymic</font></font></td>
+              <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.NumberPhone</font></font></td>
+              <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Address</font></font></td>
+              <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Description</font></font></td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+</html>

@@ -1,28 +1,38 @@
 ﻿@model PersonModel
 @{
     ViewData["Title"] = "Веб сайт на с#";
+    Layout = "_Layout";
 }
+<html>
 
-<div class="text-center">
-    <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Id</font></font></th>
-      <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Фамилия </font></font></th>
-      <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Имя</font></font></th>
-      <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отчество</font></font></th>
-    </tr>
-  </thead>
-  <tbody>
-      @foreach(var client in Model.PersonCollectoin)
-      {
-        <tr class="table-warning">
-          <th scope="row"><button type="button" class="btn btn-hover"><font style="vertical-align: inherit ;"><font style="vertical-align: inherit;">@client.Id</font></font></button></th>
-          <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.LastName</font></font></td>
-          <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.FirstName</font></font></td>
-          <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Patronymic</font></font></td>
-        </tr>
-      }
-    </tbody>
-  </table>
-</div>
+    <div class="text-center">
+      <table class="table table-hover" frame="border" >
+          <thead>
+            <tr>
+              <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Id</font></font></th>
+              <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Фамилия </font></font></th>
+              <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Имя</font></font></th>
+              <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отчество</font></font></th>
+            </tr>
+          </thead>
+          <tbody>
+              @foreach(var client in Model.PersonCollectoin)
+              {
+                <tr class="table-warning">
+                  <th width="50"> 
+                    <form action="/Client" method="get">
+                        <button type="submit" class="btn btn-hover" name="id" value="@client.Id"><strong>@client.Id</strong></button>
+                    </form>
+                  </th>
+                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.LastName</font></font></td>
+                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.FirstName</font></font></td>
+                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Patronymic</font></font></td>
+                </tr>
+              }
+            </tbody>
+      </table>
+    </div>
+    
+
+    
+</html>
