@@ -21,12 +21,5 @@
             Description = description;
         }
 
-        public Client (int id, string lastName, string firstName, string patronymic)
-        {
-            Id = id;
-            LastName = lastName;
-            FirstName = firstName;
-            Patronymic = patronymic;
-        }
     }
 }
