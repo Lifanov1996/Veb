@@ -43,5 +43,9 @@ namespace WebApplication1.Data
             return persone.Where(x => x.LastName.Contains(qwery)).ToList();
         }
 
+
+
+
+
     }
 }

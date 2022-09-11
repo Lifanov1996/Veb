@@ -5,6 +5,7 @@
 }
 <html>
 
+<<<<<<< HEAD
     <div class="text-center">
       <table class="table table-hover" frame="border" >
           <thead>
@@ -36,3 +37,32 @@
 
     
 </html>
+=======
+<div class="text-center">
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Id</font></font></th>
+      <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Фамилия </font></font></th>
+      <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Имя</font></font></th>
+      <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отчество</font></font></th>
+    </tr>
+  </thead>
+  <tbody>
+      @foreach(var client in Model.PersonCollectoin)
+      {
+        <tr class="table-warning">
+          <th> 
+            <form action="/Client" method="get">
+                <button type="submit" class="btn btn-hover" name="id" value="@client.Id"><font style="vertical-align: inherit ;"></font></button>
+            </form>
+          </th>
+          <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.LastName</font></font></td>
+          <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.FirstName</font></font></td>
+          <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Patronymic</font></font></td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+>>>>>>> 771cc6c3703ba08ceb5b01036bd92fefe4dcfc63
