@@ -38,5 +38,10 @@ namespace WebApplication1.Data
             return persone.Where(x => x.Id == id).ToList();
         }
 
+        public List<Client> GetClientSearch(string qwery)
+        {
+            return persone.Where(x => x.LastName.Contains(qwery)).ToList();
+        }
+
     }
 }

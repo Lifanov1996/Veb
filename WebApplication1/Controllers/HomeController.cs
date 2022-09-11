@@ -13,6 +13,7 @@ namespace WebApplication1.Controllers
             PersonModel model = new PersonModel();
             Persone persone = new();
             model.PersonCollectoin = persone.GetClients();
+
             return View(model);
         }
         

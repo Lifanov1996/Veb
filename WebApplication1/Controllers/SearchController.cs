@@ -5,17 +5,15 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    public class ClientController : Controller
+    public class SearchController : Controller
     {
-        
-        public IActionResult Index(int id)
+        public IActionResult Index(string qwery)
         {
             PersonModel model = new PersonModel();
             Persone persone = new Persone();
-            model.PersonCollectoin = persone.GetClientsAllId(id);
+            model.PersonCollectoin = persone.GetClientSearch(qwery);
 
             return View(model);
- 
         }
     }
 }
