@@ -23,5 +23,32 @@ namespace WebApplication1.Data
         {
             return Clients.Where(x => x.LastName.Contains(qwery)).ToList();
         }
+
+        /// <summary>
+        /// Добавление нового клиента
+        /// </summary>
+        /// <param name="lastname"></param>
+        /// <param name="firstname"></param>
+        /// <param name="patronymic"></param>
+        /// <param name="numberphone"></param>
+        /// <param name="address"></param>
+        /// <param name="description"></param>
+        public void GetAddClient(string lastname, string firstname, string patronymic, string numberphone, string address, string description)
+        {
+            using (var db = new EntityData())
+            {
+                db.Clients.Add(
+                    new Client()
+                    {
+                        LastName = lastname,
+                        FirstName = firstname,
+                        Patronymic = patronymic,
+                        NumberPhone = numberphone,
+                        Address = address,
+                        Description = description
+                    });
+                db.SaveChanges();
+            }
+        }
     }
 }

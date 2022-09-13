@@ -29,21 +29,8 @@ namespace WebApplication1.Controllers
 
         public IActionResult GetAddClient(string lastname, string firstname, string patronymic, string numberphone, string address, string description)
         {
-            using(var db = new EntityData() )
-            {
-                db.Clients.Add(
-                    new Client()
-                    {
-                        LastName = lastname,
-                        FirstName = firstname,
-                        Patronymic = patronymic,
-                        NumberPhone = numberphone,
-                        Address = address,
-                        Description = description
-                    });
-                db.SaveChanges();
-            }
-            return Redirect("~/");
+           new ClientOptional().GetAddClient(lastname, firstname, patronymic, numberphone, address, description);
+           return Redirect("~/");
         }
     }
 }
