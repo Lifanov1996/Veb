@@ -9,11 +9,8 @@ namespace WebApplication1.Controllers
     {
         public IActionResult Index(string qwery)
         {
-            PersonModel model = new PersonModel();
-            Persone persone = new Persone();
-            model.PersonCollectoin = persone.GetClientSearch(qwery);
-
-            return View(model);
+            ViewBag.Client = new ClientOptional().GetClientSearch(qwery);
+            return View();
         }
     }
 }

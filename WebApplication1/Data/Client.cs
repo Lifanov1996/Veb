@@ -2,13 +2,13 @@
 {
     public class Client
     {
-        public int Id { get; }
-        public string LastName { get; }
-        public string FirstName { get; }
-        public string Patronymic { get; }
-        public string NumberPhone { get; }
-        public string Address { get; }
-        public string Description { get; }
+        public int Id { get; set; }
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
+        public string Patronymic { get; set; }
+        public string NumberPhone { get; set; }
+        public string Address { get; set; }
+        public string Description { get; set; }
 
         public Client (int id, string lastName, string firstName, string patronymic, string numberPhone, string address, string description)
         {

@@ -1,5 +1,4 @@
-﻿@model PersonModel
-@{
+﻿@{
     ViewData["Title"] = "Веб сайт на с#";
     Layout = "_Layout";
 }
@@ -15,7 +14,7 @@
             </tr>
           </thead>
           <tbody>
-              @foreach(var client in Model.PersonCollectoin)
+              @foreach(var client in ViewBag.Client)
               {
                 <tr class="table-warning">
                   <th width="50"> 

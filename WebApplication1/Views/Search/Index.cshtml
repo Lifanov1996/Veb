@@ -1,4 +1,4 @@
-﻿@model PersonModel
+﻿
 @{
     ViewData["Title"] = "Страница клаента";
     Layout = "_Layout";
@@ -19,7 +19,7 @@
       </thead>
       <tbody>
           <text><strong>Полная информация о клиенте</strong></text>
-          @foreach(var client in Model.PersonCollectoin)
+          @foreach(var client in ViewBag.Client)
           {
             <tr class="table-warning">
               <th scope="row" width="50"><font style="vertical-align: inherit ;"><font style="vertical-align: inherit;">@client.Id</font></font></th>

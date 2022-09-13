@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebApplication1.Data;
+using WebApplication1.Entity;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
@@ -10,11 +11,10 @@ namespace WebApplication1.Controllers
 
         public IActionResult Index()
         {
-            PersonModel model = new PersonModel();
-            Persone persone = new();
-            model.PersonCollectoin = persone.GetClients();
-
-            return View(model);
+            ViewBag.Client = new EntityData().Clients;
+           
+            
+            return View();
         }
         
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
