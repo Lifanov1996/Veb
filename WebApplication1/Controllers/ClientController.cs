@@ -10,13 +10,10 @@ namespace WebApplication1.Controllers
         
         public IActionResult Index(int id)
         {
-            PersonModel model = new PersonModel();
-            Persone persone = new Persone();
+            PersonModel model = new ();
+            Persone persone = new ();
             model.PersonCollectoin = persone.GetClientsAllId(id);
-<<<<<<< HEAD
 
-=======
->>>>>>> 771cc6c3703ba08ceb5b01036bd92fefe4dcfc63
             return View(model);
  
         }
