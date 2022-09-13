@@ -15,5 +15,35 @@ namespace WebApplication1.Controllers
             return View();
  
         }
+
+        public IActionResult Search(string qwery)
+        {
+            ViewBag.Client = new ClientOptional().GetClientSearch(qwery);
+            return View();
+        }
+
+        public IActionResult AddClient()
+        {
+            return View();
+        }
+
+        public IActionResult GetAddClient(string lastname, string firstname, string patronymic, string numberphone, string address, string description)
+        {
+            using(var db = new EntityData() )
+            {
+                db.Clients.Add(
+                    new Client()
+                    {
+                        LastName = lastname,
+                        FirstName = firstname,
+                        Patronymic = patronymic,
+                        NumberPhone = numberphone,
+                        Address = address,
+                        Description = description
+                    });
+                db.SaveChanges();
+            }
+            return Redirect("~/");
+        }
     }
 }

@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Добавить клаента";
+    Layout = "_Layout";
+}
+<html>
+    <form action="~/Client/GetAddClient" method="post">
+      <fieldset>
+        <legend>Добавить клиента</legend>
+        <div class="form-group row">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="form-label mt-4">LastName</label>
+          <input type="text" name="lastName" class="form-control" placeholder="lastname">
+          <small  class="form-text text-muted">enter the client's last name</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="form-label mt-4">FistName</label>
+          <input type="text" name="firstName" class="form-control" placeholder="firstname">
+          <small  class="form-text text-muted">enter the client's first name</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="form-label mt-4">Patronymic</label>
+          <input type="text" name="patronymic" class="form-control" placeholder="patronymic">
+          <small  class="form-text text-muted">enter the client's patronymic</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="form-label mt-4">Number Phone</label>
+          <input type="text" name="numberphone" class="form-control" placeholder="number phone">
+          <small  class="form-text text-muted">enter the client's number phone</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="form-label mt-4">Address</label>
+          <input type="text" name="address" class="form-control" placeholder="address">
+          <small  class="form-text text-muted">enter the client's hone address</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="form-label mt-4">Description</label>
+          <input type="text" name="description" class="form-control" placeholder="description">
+          <small  class="form-text text-muted">enter the client's descroption</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+        </fieldset>
+    </form>
+
+
+
+
+
+
+
+</html>
