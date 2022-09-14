@@ -50,5 +50,16 @@ namespace WebApplication1.Data
                 db.SaveChanges();
             }
         }
+
+        public void GetDeletClient(int id)
+        {
+            using (var db = new EntityData())
+            {
+                db.Remove(Clients.Where(x => x.Id == id));
+
+                db.SaveChanges();
+            }
+            
+        }
     }
 }

@@ -1,9 +1,9 @@
-﻿
+﻿<!DOCTYPE html>﻿
 @{
     ViewData["Title"] = "Страница клаента";
     Layout = "_Layout";
 }
-<html>
+<html lang="en">
     <div class="text-center">
         <table class="table table-hover" frame="border">
       <thead>
@@ -22,16 +22,18 @@
           @foreach(var client in ViewBag.Client)
           {
             <tr class="table-warning">
-              <th scope="row" width="50"><font style="vertical-align: inherit ;"><font style="vertical-align: inherit;">@client.Id</font></font></th>
+              <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Id</font></font></td>
               <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.LastName</font></font></td>
               <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.FirstName</font></font></td>
               <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Patronymic</font></font></td>
               <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.NumberPhone</font></font></td>
               <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Address</font></font></td>
               <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Description</font></font></td>
+              
             </tr>
           }
         </tbody>
       </table>
+      
     </div>
 </html>

@@ -32,5 +32,11 @@ namespace WebApplication1.Controllers
            new ClientOptional().GetAddClient(lastname, firstname, patronymic, numberphone, address, description);
            return Redirect("~/");
         }
+
+        public IActionResult GetDeletClient(int id)
+        {
+            new ClientOptional().GetDeletClient(id);
+            return Redirect("~/");
+        }
     }
 }
