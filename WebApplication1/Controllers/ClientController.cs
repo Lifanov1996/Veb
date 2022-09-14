@@ -22,6 +22,13 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public IActionResult GetDeletClient(int id)
+        {
+            new ClientOptional().GetDeletClient(id);
+            return Redirect("~/");
+        }
+
+        #region Добавление клиента
         public IActionResult AddClient()
         {
             return View();
@@ -40,11 +47,28 @@ namespace WebApplication1.Controllers
             }
            
         }
+        #endregion
 
-        public IActionResult GetDeletClient(int id)
+
+        #region Изменение данных клинта
+        public IActionResult ChangeClient(int id)
         {
-            new ClientOptional().GetDeletClient(id);
-            return Redirect("~/");
+            ViewBag.Client = new ClientOptional().GetClientsAllId(id);
+            return View();
         }
+
+        public IActionResult GetChangeClient(int id, string lastname, string firstname, string patronymic, string numberphone, string address, string description)
+        {
+            try
+            {
+            new ClientOptional().GetChangeClient(id, lastname, firstname, patronymic, numberphone, address, description);
+            return Redirect("~/");
+            }
+            catch (Exception)
+            {
+                return Redirect("~/");
+            }
+        }
+        #endregion
     }
 }

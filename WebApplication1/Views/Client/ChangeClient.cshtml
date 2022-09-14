@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>﻿
+@{
+    ViewData["Title"] = "Изменение данных клаента";
+    Layout = "_Layout";
+}
+<html lang="en">
+    <form action="~/Client/GetChangeClient" method="post">
+       @foreach(var client in ViewBag.Client)
+       {
+          <fieldset>
+            <legend>Изменить данные клиента</legend> 
+             <div class="form-group">
+              <label class="form-label mt-4">Id</label>
+              <input type="text" name="id" class="form-control" value="@client.Id">
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label mt-4">LastName</label>
+              <input type="text" name="lastName" class="form-control" value="@client.LastName">
+              <small  class="form-text text-muted">enter the client's last name</small>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label mt-4">FirstName</label>
+              <input type="text" name="firstName" class="form-control" value="@client.FirstName">
+              <small  class="form-text text-muted">enter the client's first name</small>
+            </div>
+
+            <div class="form-group">
+              <label  class="form-label mt-4">Patronymic</label>
+              <input type="text" name="patronymic" class="form-control" value="@client.Patronymic">
+              <small  class="form-text text-muted">enter the client's patronymic</small>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label mt-4">Number Phone</label>
+              <input type="text" name="numberphone" class="form-control" value="@client.NumberPhone">
+              <small  class="form-text text-muted">enter the client's number phone</small>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label mt-4">Address</label>
+              <input type="text" name="address" class="form-control" value="@client.Address">
+              <small  class="form-text text-muted">enter the client's hone address</small>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label mt-4">Description</label>
+              <input type="text" name="description" class="form-control" value="@client.Description">
+              <small  class="form-text text-muted">enter the client's descroption</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Change</button>
+            </fieldset>
+        }
+    </form>
+
+</html>

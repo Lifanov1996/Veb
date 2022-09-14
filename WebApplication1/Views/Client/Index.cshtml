@@ -31,9 +31,16 @@
                   <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Description</font></font></td>
                 </tr>
                 <tr>
-                    <form action="~/Client/GetDeletClient" method="post">
-                        <button type="submit" class="btn btn-hover" name="id" value="@client.Id"><strong>Delet</strong></button>   
-                    </form>
+                    <td>
+                        <form action="~/Client/ChangeClient" method="post">
+                            <button type="submit" class="btn btn-hover" name="id" value="@client.Id"><strong>Change</strong></button>   
+                        </form>
+                    </td>
+                    <td>
+                        <form action="~/Client/GetDeletClient" method="post">
+                            <button type="submit" class="btn btn-hover" name="id" value="@client.Id"><strong>Delet</strong></button>   
+                        </form>
+                    </td>
                     
                 </tr>
               }

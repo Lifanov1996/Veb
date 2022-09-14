@@ -51,7 +51,6 @@ namespace WebApplication1.Data
             }
         }
 
-
         /// <summary>
         /// Удаление клиента из списка
         /// </summary>
@@ -73,6 +72,30 @@ namespace WebApplication1.Data
                 db.SaveChanges();                
             }
             
+        }
+
+        public void GetChangeClient(int id, string lastname, string firstname, string patronymic, string numberphone, string address, string description)
+        {
+            using (var db = new EntityData())
+            {
+                for (int i = 0; i < db.Clients.Count(); i++)
+                {
+                    foreach (var client in db.Clients)
+                    {
+                        if (client.Id == id)
+                        {
+                            client.LastName = lastname;
+                            client.FirstName = firstname;
+                            client.Patronymic = patronymic;
+                            client.NumberPhone = numberphone;
+                            client.Address = address;
+                            client.Description = description;
+
+                        }
+                    }
+                }
+                db.SaveChanges();
+            }
         }
     }
 }
