@@ -37,27 +37,40 @@ namespace WebApplication1.Data
         {
             using (var db = new EntityData())
             {
-                db.Clients.Add(
-                    new Client()
-                    {
+                db.Clients.Add(new Client()
+                {
                         LastName = lastname,
                         FirstName = firstname,
                         Patronymic = patronymic,
                         NumberPhone = numberphone,
                         Address = address,
                         Description = description
-                    });
+                });
                 db.SaveChanges();
+                
             }
         }
 
+
+        /// <summary>
+        /// Удаление клиента из списка
+        /// </summary>
+        /// <param name="id"></param>
         public void GetDeletClient(int id)
         {
             using (var db = new EntityData())
             {
-                db.Remove(Clients.Where(x => x.Id == id));
-
-                db.SaveChanges();
+                for (int i = 0; i < db.Clients.Count(); i++)
+                {
+                    foreach (var client in db.Clients)
+                    {
+                        if(client.Id == id)
+                        {
+                            db.Clients.Remove(client);
+                        }
+                    }                 
+                }
+                db.SaveChanges();                
             }
             
         }

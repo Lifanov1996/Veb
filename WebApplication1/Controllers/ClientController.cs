@@ -29,8 +29,16 @@ namespace WebApplication1.Controllers
 
         public IActionResult GetAddClient(string lastname, string firstname, string patronymic, string numberphone, string address, string description)
         {
-           new ClientOptional().GetAddClient(lastname, firstname, patronymic, numberphone, address, description);
-           return Redirect("~/");
+            try
+            {
+                 new ClientOptional().GetAddClient(lastname, firstname, patronymic, numberphone, address, description);
+                 return Redirect("~/");
+            }
+            catch (Exception)
+            {
+                return Redirect("~/");
+            }
+           
         }
 
         public IActionResult GetDeletClient(int id)
