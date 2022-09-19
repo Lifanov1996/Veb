@@ -51,6 +51,7 @@ namespace WebApplication1.Controllers
 
 
         #region Изменение данных клинта
+        
         public IActionResult ChangeClient(int id)
         {
             ViewBag.Client = new ClientOptional().GetClientsAllId(id);
@@ -59,10 +60,11 @@ namespace WebApplication1.Controllers
 
         public IActionResult GetChangeClient(int id, string lastname, string firstname, string patronymic, string numberphone, string address, string description)
         {
+
             try
             {
-            new ClientOptional().GetChangeClient(id, lastname, firstname, patronymic, numberphone, address, description);
-            return Redirect("~/");
+                new ClientOptional().GetChangeClient(id, lastname, firstname, patronymic, numberphone, address, description);
+                return Redirect("~/");
             }
             catch (Exception)
             {

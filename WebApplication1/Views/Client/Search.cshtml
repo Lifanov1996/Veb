@@ -22,7 +22,11 @@
           @foreach(var client in ViewBag.Client)
           {
             <tr class="table-warning">
-              <th scope="row" width="50"><font style="vertical-align: inherit ;"><font style="vertical-align: inherit;">@client.Id</font></font></th>
+              <th width="50"> 
+                    <form action="/Client" method="get">
+                        <button type="submit" class="btn btn-hover" name="id" value="@client.Id"><strong>@client.Id</strong></button>
+                    </form>
+                  </th>
               <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.LastName</font></font></td>
               <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.FirstName</font></font></td>
               <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Patronymic</font></font></td>

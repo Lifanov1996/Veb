@@ -14,6 +14,7 @@ namespace WebApplication1.Data
             return Clients.Where(x => x.Id == id).ToList();
         }
 
+
         /// <summary>
         /// Поиск клиента по фамилии
         /// </summary>
@@ -23,6 +24,7 @@ namespace WebApplication1.Data
         {
             return Clients.Where(x => x.LastName.Contains(qwery)).ToList();
         }
+
 
         /// <summary>
         /// Добавление нового клиента
@@ -51,6 +53,7 @@ namespace WebApplication1.Data
             }
         }
 
+
         /// <summary>
         /// Удаление клиента из списка
         /// </summary>
@@ -74,6 +77,17 @@ namespace WebApplication1.Data
             
         }
 
+
+        /// <summary>
+        /// Изменение данных клиента
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="lastname"></param>
+        /// <param name="firstname"></param>
+        /// <param name="patronymic"></param>
+        /// <param name="numberphone"></param>
+        /// <param name="address"></param>
+        /// <param name="description"></param>
         public void GetChangeClient(int id, string lastname, string firstname, string patronymic, string numberphone, string address, string description)
         {
             using (var db = new EntityData())
