@@ -16,7 +16,12 @@ html {
 body {
   margin-bottom: 60px;
 }
+
 h1{
     text-align:center;
+}
+
+.none {
+    display: none;
 }
 
