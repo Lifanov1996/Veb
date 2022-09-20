@@ -4,38 +4,43 @@
     Layout = "_Layout";
 }
 <html lang="en">
-    <div class="text-center">
-        <table class="table table-hover" frame="border">
-      <thead>
-        <tr>
-          <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Id</font></font></th>
-          <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Фамилия </font></font></th>
-          <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Имя</font></font></th>
-          <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отчество</font></font></th>
-          <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Номер телефона</font></font></th>
-          <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Адресс</font></font></th>
-          <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Описание</font></font></th>
-        </tr>
-      </thead>
-      <tbody>
-          <text><strong>Полная информация о клиенте</strong></text>
-          @foreach(var client in ViewBag.Client)
-          {
-            <tr class="table-warning">
-              <th width="50"> 
-                    <form action="/Client" method="get">
-                        <button type="submit" class="btn btn-hover" name="id" value="@client.Id"><strong>@client.Id</strong></button>
-                    </form>
-                  </th>
-              <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.LastName</font></font></td>
-              <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.FirstName</font></font></td>
-              <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Patronymic</font></font></td>
-              <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.NumberPhone</font></font></td>
-              <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Address</font></font></td>
-              <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Description</font></font></td>
+     
+    <body>
+    
+        <h1>Полная информация о клиенте</h1>
+
+        <div class="text-center">
+            <table class="table table-hover" frame="border">
+          <thead>
+            <tr>
+              <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Id</font></font></th>
+              <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Фамилия </font></font></th>
+              <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Имя</font></font></th>
+              <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отчество</font></font></th>
+              <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Номер телефона</font></font></th>
+              <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Адресс</font></font></th>
+              <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Описание</font></font></th>
             </tr>
-          }
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+              @foreach(var client in ViewBag.Client)
+              {
+                <tr class="table-warning">
+                  <th width="50"> 
+                        <form action="/Client" method="get">
+                            <button type="submit" class="btn btn-hover" name="id" value="@client.Id"><strong>@client.Id</strong></button>
+                        </form>
+                      </th>
+                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.LastName</font></font></td>
+                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.FirstName</font></font></td>
+                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Patronymic</font></font></td>
+                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.NumberPhone</font></font></td>
+                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Address</font></font></td>
+                  <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Description</font></font></td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+    </body>
 </html>
