@@ -3,24 +3,24 @@ using System.Diagnostics;
 using WebApplication1.Data;
 using WebApplication1.Entity;
 using WebApplication1.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IClient client;
 
-        public IActionResult Index()
+        public HomeController(IClient Client)
         {
-            ViewBag.Client = new EntityData().Clients;
-           
-            
-            return View();
+            this.client = Client;
+        }
+
+        [HttpGet]
+        public IActionResult Index()
+        {           
+            return View(client.GetClient());
         }
         
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

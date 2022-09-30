@@ -8,29 +8,21 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />
+         <system.web> 
+            <authentication mode="Forms">
+              <forms loginUrl="~/user/login" timeout="1000" name="__Auth" />
+            </authentication>  
+          </system.web> 
     
 </head>
 
 <body>
-    <header>      
-        <div >
-
-            <a href="/Home" class="btn">Home Page</a>
-
-            <form action="/Client/Search" method="get" >
-                 <input style="text-align: center;" name="qwery" type="text" placeholder="Поиск по фамилии">
-                 
-                 <button class="btn btn-secondary my-2 my-sm-0" type="submit"><font style="vertical-align: middle;">Поиск</font></button>
-            </form>
-        </div>
-        
-    </header>
-    
-
-    <div class="container">
-        <main role="main">
-            @RenderBody()
-        </main>
+    <nav>
+        <div > @await Component.InvokeAsync("LogoutView") </div>
+    </nav>
+   
+    <div class="container">        
+            @RenderBody()        
     </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

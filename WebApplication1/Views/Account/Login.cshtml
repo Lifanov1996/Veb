@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>﻿
+@model WebApplication1.AccountUser.UserLogin
+@{
+    ViewData["Title"] = "Login";
+}
+<html>
+    <body>
+        <div class="container" >
+            <div class="row" style="text-align:center;margin:0 400px;">
+                <div  >
+                    <h3 class="text-center">Вход</h3>
+
+                    <form asp-action="Login" asp-antiforgery="true">
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <input type="hidden" asp-route="@Model.ReturnUrl" />
+
+                        <div class="col-xs-12" style="padding:10px 0">
+                            <div class="form-group">
+                                <input asp-for="@Model.LoginUser" class="form-control" placeholder="Логин" />
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <input asp-for="@Model.PasswordUser" class="form-control" placeholder="Пароль" />
+                            </div>
+                        </div>
+
+               
+
+                        <div class="text-center col-xs-12">
+                            <button type="submit" class="btn btn-default">Войти</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

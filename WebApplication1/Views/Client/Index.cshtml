@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>﻿
+﻿@using WebApplication1.Data
+<!DOCTYPE html>﻿
 @{
     ViewData["Title"] = "Страница клаента";
     Layout = "_Layout";
@@ -23,7 +24,7 @@
             </tr>
           </thead>
           <tbody>
-              @foreach(var client in ViewBag.Client)
+              @foreach(var client in Model)
               {
                 <tr class="table-warning">
                   <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Id</font></font></td>
@@ -34,19 +35,21 @@
                   <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Address</font></font></td>
                   <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Description</font></font></td>
                 </tr>
-                <tr>
-                    <td>
-                        <form action="~/Client/ChangeClient" method="post">
-                            <button type="submit" class="btn btn-hover" name="id" value="@client.Id"><strong>Change</strong></button>   
-                        </form>
-                    </td>
-                    <td>
-                        <form action="~/Client/GetDeletClient" method="post">
-                            <button type="submit" class="btn btn-hover" name="id" value="@client.Id"><strong>Delet</strong></button>   
-                        </form>
-                    </td>
-                    
-                </tr>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <tr>                        
+                            <td>
+                                <form action="~/Client/ChangeClient" method="post">
+                                    <button type="submit" class="btn btn-hover" name="id" value="@client.Id"><strong>Change</strong></button>   
+                                </form>
+                            </td>
+                            <td>
+                                <form action="/Client/GetDeletClient" method="get">
+                                    <button type="submit" class="btn btn-hover" name="id" value="@client.Id"><strong>Delet</strong></button>   
+                                </form>
+                            </td>                   
+                        </tr>
+                     }
               }
             </tbody>
       </table>

@@ -1,0 +1,85 @@
+﻿@*@if (User.Identity.IsAuthenticated)
+{
+    <div class="btn-group pull-right" style="width: 650px;" >
+        <form action="/Client/Search" method="get" >
+            <input style="text-align: center;" name="qwery" type="text" placeholder="Поиск по фамилии">
+                 
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit"><font style="vertical-align: middle;">Поиск</font></button>
+        </form>
+        <a class="navbar-brand" href="~/Home">Home page</a>
+
+        <a class="navbar-brand" href="~/Client/AddClient">Add Client</a>
+
+        <a class="navbar-brand" herf="#">@User.Identity.Name в системе</a>
+
+        <form method="post" asp-controller="Account" asp-action="Logout" id="logoutform" asp-antiforgery="true">
+            @*<input type="submit" value="Выход"/>*@
+            @*<a class="navbar-brand" href="#" onclick="document.getElementById('logoutform').submit()">Выход</a>
+        </form>
+    </div>
+}*@
+@*else
+{
+    <div class="headertop" >
+        <a class="navbar-brand" href="~/Home">Home page</a>
+        <a class="navbar-brand" href="/Account/Login">Вход</a>
+        <a class="navbar-brand" href="/Account/Register">Регистрация </a>
+    </div>
+}*@
+@if(User.Identity.IsAuthenticated)
+{  
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="~/Home">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="~/Client/AddClient">Add Client
+                <span class="visually-hidden">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">@User.Identity.Name в системе</a>
+            </li>
+            <li class="nav-item">
+                <form method="post" asp-controller="Account" asp-action="Logout" id="logoutform" asp-antiforgery="true">
+                    <a class="nav-link active" href="#" onclick="document.getElementById('logoutform').submit()">Выход</a>
+                </form>
+            </li>
+          </ul>
+          <form class="d-flex" action="/Client/Search" method="get">
+            <input name="qwery" class="form-control me-sm-2" type="text" placeholder="Поиск по фамилии">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+}
+else
+{
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="~/Home">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="/Account/Login">Login
+                <span class="visually-hidden">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/Account/Register">Registration
+                <span class="visually-hidden">(current)</span>
+              </a>
+            </li>   
+          </ul>
+        </div>
+      </div>
+    </nav>
+}

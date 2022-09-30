@@ -1,96 +1,61 @@
-﻿using WebApplication1.Entity;
+﻿using Microsoft.EntityFrameworkCore;
+using WebApplication1.Entity;
 
 namespace WebApplication1.Data
 {
-    public class ClientOptional : EntityData
+    public class ClientOptional : IClient
     {
-        /// <summary>
-        /// Переход на страницу клиента по id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public List<Client> GetClientsAllId(int id)
+        private readonly EntityData entityData;
+
+        public ClientOptional(EntityData EntityData)
         {
-            return Clients.Where(x => x.Id == id).ToList();
+            this.entityData = EntityData;
         }
 
-
-        /// <summary>
-        /// Поиск клиента по фамилии
-        /// </summary>
-        /// <param name="qwery"></param>
-        /// <returns></returns>
-        public List<Client> GetClientSearch(string qwery)
+        public void AddClient(string lastname, string firstname, string patronymic, string numberphone, string address, string description)
         {
-            return Clients.Where(x => x.LastName.Contains(qwery)).ToList();
-        }
-
-
-        /// <summary>
-        /// Добавление нового клиента
-        /// </summary>
-        /// <param name="lastname"></param>
-        /// <param name="firstname"></param>
-        /// <param name="patronymic"></param>
-        /// <param name="numberphone"></param>
-        /// <param name="address"></param>
-        /// <param name="description"></param>
-        public void GetAddClient(string lastname, string firstname, string patronymic, string numberphone, string address, string description)
-        {
-            using (var db = new EntityData())
+            using (var db = entityData)
             {
                 db.Clients.Add(new Client()
                 {
-                        LastName = lastname,
-                        FirstName = firstname,
-                        Patronymic = patronymic,
-                        NumberPhone = numberphone,
-                        Address = address,
-                        Description = description
+                    LastName = lastname,
+                    FirstName = firstname,
+                    Patronymic = patronymic,
+                    NumberPhone = numberphone,
+                    Address = address,
+                    Description = description
                 });
                 db.SaveChanges();
-                
             }
         }
 
-
-        /// <summary>
-        /// Удаление клиента из списка
-        /// </summary>
-        /// <param name="id"></param>
         public void GetDeletClient(int id)
         {
-            using (var db = new EntityData())
+            using (var db = entityData)
             {
                 for (int i = 0; i < db.Clients.Count(); i++)
                 {
                     foreach (var client in db.Clients)
                     {
-                        if(client.Id == id)
+                        if (client.Id == id)
                         {
                             db.Clients.Remove(client);
                         }
-                    }                 
+                    }
                 }
-                db.SaveChanges();                
+                db.SaveChanges();
             }
+        }
+
+        public IEnumerable<Client> GetAppClient(int id)
+        {
+            return this.entityData.Clients.Where(x => x.Id == id).ToList();
             
         }
 
-
-        /// <summary>
-        /// Изменение данных клиента
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="lastname"></param>
-        /// <param name="firstname"></param>
-        /// <param name="patronymic"></param>
-        /// <param name="numberphone"></param>
-        /// <param name="address"></param>
-        /// <param name="description"></param>
         public void GetChangeClient(int id, string lastname, string firstname, string patronymic, string numberphone, string address, string description)
         {
-            using (var db = new EntityData())
+            using (var db = entityData)
             {
                 for (int i = 0; i < db.Clients.Count(); i++)
                 {
@@ -111,5 +76,18 @@ namespace WebApplication1.Data
                 db.SaveChanges();
             }
         }
+
+        public IEnumerable<Client> GetClient()
+        {
+            return this.entityData.Clients;
+        }
+
+        public IEnumerable<Client> GetSearchClient(string qwery)
+        {
+            return this.entityData.Clients.Where(x => x.LastName.Contains(qwery)).ToList();
+        }
+
     }
 }
+
+

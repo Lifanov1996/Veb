@@ -3,67 +3,77 @@ using System.Diagnostics;
 using WebApplication1.Data;
 using WebApplication1.Entity;
 using WebApplication1.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication1.Controllers
 {
     public class ClientController : Controller
     {
+        private readonly IClient client;
+
+        public ClientController(IClient Client)
+        {
+            this.client = Client;
+        }
+
         
         public IActionResult Index(int id)
-        {
-            ViewBag.Client = new ClientOptional().GetClientsAllId(id);
-            return View();
- 
+        {          
+            return View(client.GetAppClient(id));
         }
 
+        
         public IActionResult Search(string qwery)
-        {
-            ViewBag.Client = new ClientOptional().GetClientSearch(qwery);
-            return View();
+        {           
+            return View(client.GetSearchClient(qwery));
         }
 
+
+        
         public IActionResult GetDeletClient(int id)
         {
-            new ClientOptional().GetDeletClient(id);
-            return Redirect("~/");
+            client.GetDeletClient(id);
+            return Redirect("~/Home/");
         }
 
-        #region Добавление клиента
+
+        
         public IActionResult AddClient()
         {
             return View();
         }
-
+        
         public IActionResult GetAddClient(string lastname, string firstname, string patronymic, string numberphone, string address, string description)
         {
             try
             {
-                 new ClientOptional().GetAddClient(lastname, firstname, patronymic, numberphone, address, description);
-                 return Redirect("~/");
+                client.AddClient(lastname, firstname, patronymic, numberphone, address, description);
+                return Redirect("~/");
             }
             catch (Exception)
             {
                 return Redirect("~/");
             }
-           
+
         }
-        #endregion
 
 
-        #region Изменение данных клинта
+
+
         
         public IActionResult ChangeClient(int id)
-        {
-            ViewBag.Client = new ClientOptional().GetClientsAllId(id);
-            return View();
+        {           
+            return View(client.GetAppClient(id));
         }
 
+             
         public IActionResult GetChangeClient(int id, string lastname, string firstname, string patronymic, string numberphone, string address, string description)
         {
-
             try
             {
-                new ClientOptional().GetChangeClient(id, lastname, firstname, patronymic, numberphone, address, description);
+                client.GetChangeClient(id, lastname, firstname, patronymic, numberphone, address, description);
                 return Redirect("~/");
             }
             catch (Exception)
@@ -71,6 +81,6 @@ namespace WebApplication1.Controllers
                 return Redirect("~/");
             }
         }
-        #endregion
+        
     }
 }

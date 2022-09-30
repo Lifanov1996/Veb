@@ -9,7 +9,7 @@ html {
 }
 
 html {
-  position: relative;
+  
   min-height: 100%;
 }
 
@@ -30,3 +30,9 @@ h1{
     width: 200px;
 }
 
+.headertop{ 
+    display:block
+    background-color: orangered;
+    margin:30px 100%;
+    
+}

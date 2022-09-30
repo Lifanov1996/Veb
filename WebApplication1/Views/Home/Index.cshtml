@@ -1,3 +1,4 @@
+@using WebApplication1.Data
 <!DOCTYPE html>﻿
 @{
     ViewData["Title"] = "Веб сайт на с#";
@@ -15,7 +16,7 @@
             </tr>
           </thead>
           <tbody>
-              @foreach(var client in ViewBag.Client)
+              @foreach(var client in Model)
               {
                 <tr class="table-warning">
                   <th width="50"> 
@@ -29,8 +30,7 @@
                 </tr>
               }
             </tbody>
-      </table>
-      <a href="/Client/AddClient" class="btn">Add</a>
+      </table>      
     </div>
     
 

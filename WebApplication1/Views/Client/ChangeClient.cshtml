@@ -1,16 +1,15 @@
-﻿<!DOCTYPE html>﻿
+﻿@using WebApplication1.Data
+
+<!DOCTYPE html>﻿
 @{
     ViewData["Title"] = "Изменение данных клаента";
     Layout = "_Layout";
-    
 }
 
-<html lang="en">
-    
+<html lang="en">    
     <body>
-
         <form action="~/Client/GetChangeClient" method="post">
-           @foreach(var client in ViewBag.Client)
+           @foreach(var client in Model)
            {
               <fieldset>
 
@@ -58,9 +57,8 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Change</button>
-                </fieldset>
-            }
+              </fieldset>
+           }
         </form>
-
     </body>
 </html>
