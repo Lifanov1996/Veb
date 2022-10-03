@@ -34,23 +34,21 @@ builder.Services.Configure<IdentityOptions>(options =>
             options.Lockout.AllowedForNewUsers = true;
         });
 
-//builder.Services.ConfigureApplicationCookie(options =>
-//        {
-//            options.Cookie.HttpOnly = true;
-//            options.ExpireTimeSpan = TimeSpan.FromSeconds(5);
-//            options.LoginPath = "/Account/Login";
-//            options.LogoutPath = "/Account/Logout";
-//            options.AccessDeniedPath = "/";
-//            options.SlidingExpiration = true;
-//        });
 
-
+builder.Services.ConfigureApplicationCookie(options =>
+        {
+            options.Cookie.HttpOnly = true;           
+            options.LoginPath = "/Account/Login";
+            options.LogoutPath = "/Account/Logout";           
+            options.SlidingExpiration = true;
+        });
 
 builder.Services.AddRazorPages();
 
 
 var app = builder.Build();
 
+app.UseAuthentication();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -69,7 +67,6 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.UseAuthentication();
 
 app.MapControllerRoute(
     name: "default",

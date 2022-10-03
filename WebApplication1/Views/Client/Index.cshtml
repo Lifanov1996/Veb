@@ -35,8 +35,7 @@
                   <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Address</font></font></td>
                   <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@client.Description</font></font></td>
                 </tr>
-                    @if (User.Identity.IsAuthenticated)
-                    {
+                    
                         <tr>                        
                             <td>
                                 <form action="~/Client/ChangeClient" method="post">
@@ -49,7 +48,7 @@
                                 </form>
                             </td>                   
                         </tr>
-                     }
+                     
               }
             </tbody>
       </table>

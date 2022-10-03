@@ -9,29 +9,31 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication1.Controllers
 {
+    
     public class ClientController : Controller
     {
         private readonly IClient client;
-
+        
+        
         public ClientController(IClient Client)
         {
             this.client = Client;
         }
 
-        
+        [HttpGet]
         public IActionResult Index(int id)
         {          
             return View(client.GetAppClient(id));
         }
 
-        
+        [HttpGet]
         public IActionResult Search(string qwery)
         {           
             return View(client.GetSearchClient(qwery));
         }
 
-
-        
+        [Authorize]
+        [HttpGet]
         public IActionResult GetDeletClient(int id)
         {
             client.GetDeletClient(id);
@@ -39,12 +41,12 @@ namespace WebApplication1.Controllers
         }
 
 
-        
+        [HttpGet]
         public IActionResult AddClient()
         {
             return View();
         }
-        
+        [HttpPost]
         public IActionResult GetAddClient(string lastname, string firstname, string patronymic, string numberphone, string address, string description)
         {
             try
@@ -62,13 +64,14 @@ namespace WebApplication1.Controllers
 
 
 
-        
+        [Authorize]
+        [HttpPost]
         public IActionResult ChangeClient(int id)
         {           
             return View(client.GetAppClient(id));
         }
 
-             
+        [HttpPost]   
         public IActionResult GetChangeClient(int id, string lastname, string firstname, string patronymic, string numberphone, string address, string description)
         {
             try
